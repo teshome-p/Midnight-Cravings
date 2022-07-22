@@ -1,0 +1,16 @@
+import requests
+import json
+import http.client
+
+#def login():
+
+conn = http.client.HTTPConnection("path_to_your_api")
+
+headers = { 'authorization': "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjBEVEdvc3M4clhrVTBSNTJKeVlUQiJ9.eyJpc3MiOiJodHRwczovL2Rldi1iaGNwdWd3aS51cy5hdXRoMC5jb20vIiwic3ViIjoiRHVIdE50VUpHT1hPMW1jOXpVdVA0S3dHS2tqenlMT1BAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vcHJvamVjdF80LyIsImlhdCI6MTY1ODI2MjAxNywiZXhwIjoxNjU4MzQ4NDE3LCJhenAiOiJEdUh0TnRVSkdPWE8xbWM5elV1UDRLd0dLa2p6eUxPUCIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.AedFuOtfEvZ1rukYVrYWrREr3mi1N482pxI_NhaPR8IvSvwkPyPyff3ICoqxzBc0SjrXMf6iiA8zZXRlVd2YyYgHzu1oXPiPCYAv757LUF9fKB27I9zfVdT-id6odQEms2Lgw6HckcI3_-o6EHhDETwjk6E5xEtJbEU629tPq2mw1ba8n7LjzKvvwGmpv7TgOW1FTkz1T7CiZLkn-Cf5CTTPsylnfsGord0ZN5IyrmtEglvJ9TwECoaG7F0oR5xzT7YmXcFDqmn-dsv9x48TbvkPKRK5XWQaynQLzMCSmlOke5vJZ7ci1cpr2x-KMj7AempkpJyzdmDkQk5o8-b4JQ" }
+
+conn.request("GET", "/", headers=headers)
+
+res = conn.getresponse()
+data = res.read()
+
+print(data.decode("utf-8"))
