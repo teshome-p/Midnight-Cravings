@@ -1,0 +1,11 @@
+{% extends 'website.html' %}
+{% block content %}
+    <h2>{{ subtitle }}</h2>
+    <form method="post" action="">
+        <input type="submit" value="Add pizza to cart" name="pizza"/>
+        <input type="submit" value="Add item 2 to cart" name="item 2"/>
+        <input type="submit" value="Add item 3 to cart" name="item 3"/>
+        <input type="submit" value="Add item 4 to cart" name="item 4"/>
+        <input type="submit" value="View cart" name="view cart"/>
+    </form>
+{% endblock content %}
