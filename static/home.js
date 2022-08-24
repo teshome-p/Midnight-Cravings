@@ -2,7 +2,7 @@ const headerImg = document.querySelector('.head')
 
 const UPDATE_TIME_INTERVAL = 4000
 
-//  Enter URLs of your own custom images
+//These are all of the images that are rotated through on the main page
 const imagesArray = [
   "../static/images/burgers-and-fries.jpg",
   "../static/images/ground-beef-pizza.jpg",
@@ -19,22 +19,23 @@ const imagesArray = [
 ]
 
 let i = 0
-
-setInterval(()=>{
-  if(i == 11){
+// The code below is responsible for switching the displayed image on the home page
+setInterval( ()=> {
+  if (i == 11) {
     i = 0
-  }
-  else {i = i + 1};
-  console.log('i was run',i)
+  };
+  else {
+    i = i + 1};
   console.log(headerImg);
-  headerImg.src = imagesArray[i]
-},UPDATE_TIME_INTERVAL)
+  headerImg.src = imagesArray[i];
+  },UPDATE_TIME_INTERVAL)
 
 
 const popularitemsclass = [...document.querySelectorAll('.popularitemsclass')];
 const nxtBtn = [...document.querySelectorAll('.nxt-btn')];
 const preBtn = [...document.querySelectorAll('.pre-btn')];
 
+//Each code block below sets up the click event listeners for each section of the menu
 popularitemsclass.forEach((item, i) => {
     let containerDimenstions = item.getBoundingClientRect();
     let containerWidth = containerDimenstions.width;
