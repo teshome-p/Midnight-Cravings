@@ -13,7 +13,8 @@ app.config['SECRET_KEY'] = '48103c3f1e535f696813b3bcb1321b7b'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
 
-cart_items = []
+cart_items = [] # Used to store the items a user adds to their cart
+
 prices = {"Burger and Fries":15,"Philly Cheesesteak":17,"Hot Wings":15,
         "Gluten Free Vegan Pizza":25, "Beyond Burger on a Gluten Free Bun":15,
         "Chipotle Lentil Tacos":12,"Beyond Beef Tacos":14,"Vegan Nice Cream":9,
@@ -36,6 +37,7 @@ class User(db.Model):
 def load_user(user_id):
     return User.get(user_id)
 
+# Handles the cart page, and checks if the user wants to purchase their selected items
 @app.route("/cart", methods= ['GET', 'POST'])
 def cart():
     if request.method == "POST":
@@ -48,6 +50,7 @@ def cart():
             return "<b> Order confirmed <br> " + price + " </b>"
     return render_template('cart.html', subtitle='Cart Page', text=", ".join(cart_items))
 
+# Handles the menu page, and checks if the user selects an item from the menu, and checks if they want to view the cart
 @app.route("/menu", methods = ['GET','POST'])
 def menu():
     if request.method == "POST":
@@ -62,6 +65,7 @@ def menu():
             return redirect(url_for("cart"))
     return render_template("menu.html")
 
+# Handles the home page, and checks if the user selects the button to go to the menu
 @app.route("/home", methods = ['GET','POST'])
 def home():
     if request.method == "POST":
@@ -69,6 +73,7 @@ def home():
             return redirect(url_for('menu'))
     return render_template("home.html")
 
+# Handles the page for creating an account
 @app.route("/", methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
@@ -94,7 +99,7 @@ def register():
         return redirect(url_for('home')) # if so - send to home page
     return render_template('register.html', title='Sign-Up', form=form)
 
-# Route for handling the login page logic
+# Handles the page for logging in when you already have an account
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
@@ -107,8 +112,6 @@ def login():
         else:
             return redirect(url_for('home'))
     return render_template('login.html', error=error)
-
-
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")
