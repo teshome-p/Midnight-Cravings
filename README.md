@@ -1,6 +1,6 @@
 # Midnight Cravings
 
-## A fake restaurant's online menu created using HTML, CSS, Javascript, Python, and Flask.
+## A fake restaurant's online ordering site created using HTML, CSS, Javascript, Python, and Flask.
 
 ## Register
 The user starts at the register page. They can enter a username, email, and password to create an account on the site. If the user tries to register with a username/email that has already been taken, they will be redirected to the login page so they can log in to that account, and also be allowed to try creating an account again. If they successfully create a new account, they're automatically logged in are redirected straight to the home page of the site.
